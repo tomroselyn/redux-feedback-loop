@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CommentsCard extends Component {
+    
+    handleInput = (event) => {
+        this.props.dispatch({ type: 'SET_COMMENTS', payload: event.target.value })
+    }
+
+    handleNext = () => {
+        this.props.history.push('/');
+    }
+
     render() {
         return (
-            <p>Comments Card!!!</p>
+            <div>
+                <h2>Any comments you want to leave?</h2>
+                <label>Comments</label>
+                <input onChange={this.handleInput} type="text" placeholder="Comments" />
+                <button onClick={this.handleNext}>NEXT</button>
+            </div>
         )
     }
 }

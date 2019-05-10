@@ -8,16 +8,35 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
-const feedbackReducer = (state = {}, action) => {
+let initialFeedbackState = {
+    feelings: 0,
+    understanding: 0,
+    support: 0,
+    comments: ''
+}
+
+const feedbackReducer = (state = initialFeedbackState, action) => {
     switch(action.type) {
         case 'SET_FEELINGS':
-            return state;
+            return {
+                ...state,
+                feelings: action.payload
+            }
         case 'SET_UNDERSTANDING':
-            return state;
+            return {
+                ...state,
+                understanding: action.payload
+            }
         case 'SET_SUPPORT':
-            return state;
+            return {
+                ...state,
+                support: action.payload
+            }
         case 'SET_COMMENTS':
-            return state;
+            return {
+                ...state,
+                comments: action.payload
+            }
         default:
             return state;
     }
