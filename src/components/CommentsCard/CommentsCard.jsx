@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Review from '../Review/Review';
 
 class CommentsCard extends Component {
     
@@ -18,6 +19,7 @@ class CommentsCard extends Component {
                 <label>Comments</label>
                 <input onChange={this.handleInput} type="text" placeholder="Comments" />
                 <button onClick={this.handleNext}>NEXT</button>
+                <Review />
             </div>
         )
     }

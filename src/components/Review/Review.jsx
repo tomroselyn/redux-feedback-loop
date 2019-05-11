@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 class Review extends Component {
 
     handleSubmit = () => {
         console.log('form submitted, or did it???')
+        this.props.history.push('/success');
     }
 
     render() {
@@ -42,4 +44,4 @@ const mapRedux = (reduxState) => {
     return {feedback: reduxState.feedbackReducer}
 }
 
-export default connect(mapRedux)(Review);
+export default withRouter(connect(mapRedux)(Review));
