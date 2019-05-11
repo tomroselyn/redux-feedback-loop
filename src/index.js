@@ -37,7 +37,7 @@ const feedbackReducer = (state = initialFeedbackState, action) => {
                 ...state,
                 comments: action.payload
             }
-        case 'CLEAR_ALL_FEEDBACK':
+        case 'CLEAR_FEEDBACK':
             return initialFeedbackState;
         default:
             return state;

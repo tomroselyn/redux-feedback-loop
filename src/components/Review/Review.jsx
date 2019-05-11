@@ -6,17 +6,8 @@ import axios from 'axios';
 class Review extends Component {
 
     handleSubmit = () => {
-        //package data
-        let objectToSend = {
-            feeling: this.props.feedback.feeling,
-            understanding: this.props.feedback.understanding,
-            support: this.props.feedback.support,
-            comments: this.props.feedback.comments
-        }
-
-        console.log('objectToSend', objectToSend);
         //send data to server for storage
-        axios.post('/feedback', objectToSend)
+        axios.post('/feedback', this.props.feedback)
         .then(response => {
             console.log('feedback submitted')
             //navigate to success page

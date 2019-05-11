@@ -5,7 +5,7 @@ class Success extends Component {
 
     handleClick = () => {
         console.log('resetting form');
-        this.props.dispatch({type: 'CLEAR_ALL_FEEDBACK'})
+        this.props.dispatch({type: 'CLEAR_FEEDBACK'})
         this.props.history.push('/');
     }
 
