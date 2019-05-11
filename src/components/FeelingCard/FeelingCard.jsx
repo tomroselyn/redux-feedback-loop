@@ -16,8 +16,8 @@ class FeelingsCard extends Component {
         return (
             <div>
                 <h2>How are you feeling today?</h2>
-                <label>Feeling?</label>
-                <input onChange={this.handleInput} type="number" placeholder="1 - 5" />
+                <label>Feeling? (1 - 5)</label>
+                <input onChange={this.handleInput} type="number"/>
                 <button onClick={this.handleNext}>NEXT</button>
                 <Review />
             </div>

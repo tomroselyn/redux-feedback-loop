@@ -17,7 +17,7 @@ class CommentsCard extends Component {
             <div>
                 <h2>Any comments you want to leave?</h2>
                 <label>Comments</label>
-                <input onChange={this.handleInput} type="text" placeholder="Comments" />
+                <input onChange={this.handleInput} type="text" />
                 <button onClick={this.handleNext}>NEXT</button>
                 <Review />
             </div>

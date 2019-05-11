@@ -16,8 +16,8 @@ class SupportCard extends Component {
         return (
             <div>
                 <h2>How well are you being supported?</h2>
-                <label>Feeling?</label>
-                <input onChange={this.handleInput} type="number" placeholder="1 - 5" />
+                <label>Support? (1 - 5)</label>
+                <input onChange={this.handleInput} type="number" />
                 <button onClick={this.handleNext}>NEXT</button>
                 <Review />
             </div>

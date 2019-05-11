@@ -16,8 +16,8 @@ class UnderstandingCard extends Component {
         return (
             <div>
                 <h2>How well are you understanding the content?</h2>
-                <label>Understanding?</label>
-                <input onChange={this.handleInput} type="number" placeholder="1 - 5" />
+                <label>Understanding? (1 - 5)</label>
+                <input onChange={this.handleInput} type="number" />
                 <button onClick={this.handleNext}>NEXT</button>
                 <Review />
             </div>
