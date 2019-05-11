@@ -9,6 +9,7 @@ import UnderstandingCard from '../UnderstandingCard/UnderstandingCard';
 import SupportCard from '../SupportCard/SupportCard';
 import CommentsCard from '../CommentsCard/CommentsCard';
 import Success from '../Success/Success';
+import Admin from '../Admin/Admin';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/support" component={SupportCard} />
           <Route path="/comments" component={CommentsCard} />
           <Route path="/success" component={Success} />
+          <Route path="/admin" component={Admin} />
         </Router>
       </div>
     );

@@ -5,6 +5,6 @@ let feedbackData = [
         support: 3,
         comments: `third time's a charm`
     }
-]
+];
 
 module.exports = feedbackData;
