@@ -4,7 +4,7 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
 //routes
-import FeelingsCard from '../FeelingsCard/FeelingsCard';
+import FeelingCard from '../FeelingCard/FeelingCard';
 import UnderstandingCard from '../UnderstandingCard/UnderstandingCard';
 import SupportCard from '../SupportCard/SupportCard';
 import CommentsCard from '../CommentsCard/CommentsCard';
@@ -20,7 +20,7 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <Router>
-          <Route exact path="/" component={FeelingsCard}/>
+          <Route exact path="/" component={FeelingCard}/>
           <Route path="/understanding" component={UnderstandingCard} />
           <Route path="/support" component={SupportCard} />
           <Route path="/comments" component={CommentsCard} />

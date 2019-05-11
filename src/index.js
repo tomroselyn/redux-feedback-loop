@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 let initialFeedbackState = {
-    feelings: 0,
+    feeling: 0,
     understanding: 0,
     support: 0,
     comments: ''
@@ -17,10 +17,10 @@ let initialFeedbackState = {
 
 const feedbackReducer = (state = initialFeedbackState, action) => {
     switch(action.type) {
-        case 'SET_FEELINGS':
+        case 'SET_FEELING':
             return {
                 ...state,
-                feelings: action.payload
+                feeling: action.payload
             }
         case 'SET_UNDERSTANDING':
             return {

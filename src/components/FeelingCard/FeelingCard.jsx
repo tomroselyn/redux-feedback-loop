@@ -5,7 +5,7 @@ import Review from '../Review/Review';
 class FeelingsCard extends Component {
     
     handleInput = (event) => {
-        this.props.dispatch({type: 'SET_FEELINGS', payload: event.target.value})
+        this.props.dispatch({type: 'SET_FEELING', payload: event.target.value})
     }
 
     handleNext = () => {
