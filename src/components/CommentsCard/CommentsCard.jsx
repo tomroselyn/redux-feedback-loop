@@ -38,12 +38,12 @@ class CommentsCard extends Component {
                         </Typography>
                         <TextField
                             multiline
+                            className="commentField"
                             label="Comments?"
                             value={this.state.comment}
                             onChange={this.handleInput}
                             margin="normal"
                             variant="outlined"
-                            helperText="this is the helper text"
                         >
                         </TextField>
                     </CardContent>

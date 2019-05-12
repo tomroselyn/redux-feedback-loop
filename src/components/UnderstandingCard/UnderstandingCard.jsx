@@ -35,12 +35,12 @@ class UnderstandingCard extends Component {
                         </Typography>
                         <TextField
                             select
+                            className="inputField"
                             label="Understanding? (1 - 5)"
                             value={this.state.rating}
                             onChange={this.handleSelect}
                             margin="normal"
                             variant="outlined"
-                            helperText="this is the helper text"
                         >
                             <MenuItem value="1">1</MenuItem>
                             <MenuItem value="2">2</MenuItem>

@@ -12,3 +12,11 @@ body {
   width: 90%;
   margin: 20px auto;
 }
+
+.inputField {
+  width: 200px;
+}
+
+.commentField {
+  width: 300px;
+}
