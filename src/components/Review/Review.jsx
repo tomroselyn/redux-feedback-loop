@@ -54,7 +54,7 @@ class Review extends Component {
                             Review Your Feedback
                         </Typography>
                         <Typography component="p" variant="body2">
-                            Feelings: {this.props.feedback.feeling}
+                            Feeling: {this.props.feedback.feeling}
                         </Typography>
                         <Typography component="p" variant="body2">
                             Understanding: {this.props.feedback.understanding}
