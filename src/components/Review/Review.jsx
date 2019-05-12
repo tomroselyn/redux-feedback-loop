@@ -24,13 +24,10 @@ class Review extends Component {
         let submitButton;
 
         if (
-            this.props.feedback.feeling > 0
-            && this.props.feedback.feeling <= 5
-            && this.props.feedback.understanding > 0
-            && this.props.feedback.understanding <= 5
-            && this.props.feedback.support > 0
-            && this.props.feedback.support <= 5
-            && this.props.feedback.comments !== ''
+            this.props.feedback.feeling
+            && this.props.feedback.understanding
+            && this.props.feedback.support
+            && this.props.feedback.comments
         ) {
             submitButton = 
                 <Button
@@ -68,10 +65,6 @@ class Review extends Component {
                         <Typography component="p" variant="body2">
                             Comments: {this.props.feedback.comments}
                         </Typography>
-                        {/* <p>Feelings: {this.props.feedback.feeling}</p>
-                        <p>Understanding: {this.props.feedback.understanding}</p>
-                        <p>Support: {this.props.feedback.support}</p>
-                        <p>Comments: {this.props.feedback.comments}</p> */}
                     </CardContent>
                     <CardActions className="cardActions">
                         {submitButton}

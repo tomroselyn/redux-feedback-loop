@@ -14,20 +14,16 @@ class FeelingsCard extends Component {
         this.props.dispatch({ type: 'CLEAR_FEEDBACK' })
     }
 
+    handleNext = () => {
+        this.props.dispatch({ type: 'SET_FEEDBACK', name: 'feeling', payload: this.state.rating })
+        this.props.history.push('/understanding');
+    }
+
     handleSelect = (event) => {
         this.setState({
             rating: event.target.value,
             valid: true
         })
-    }
-
-    // handleInput = (event) => {
-    //     this.props.dispatch({type: 'SET_FEEDBACK', name: 'feeling', payload: event.target.value})
-    // }
-
-    handleNext = () => {
-        this.props.dispatch({ type: 'SET_FEEDBACK', name: 'feeling', payload: this.state.rating })
-        this.props.history.push('/understanding');
     }
     
     render() {
