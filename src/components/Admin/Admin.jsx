@@ -1,22 +1,25 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import axios from 'axios';
 import { Card, CardContent, CardActions, Typography, Table, TableBody, TableCell, TableHead, TableRow, Button } from '@material-ui/core';
 
 
 class Admin extends Component {
 
+    //state stores all feedback data locally after the GET request is complete
     state = {
         feedbackData: []
     }
 
+    //on mount, GET data from server
     componentDidMount() {
         this.getFeedbackData();
     }
 
     getFeedbackData = () => {
+        //request data from /feedback server route
         axios.get('/feedback')
         .then(response => {
+            //set local state to data received from server request
             this.setState({
                 feedbackData: response.data
             })
@@ -27,8 +30,10 @@ class Admin extends Component {
     }
 
     handleDelete = (id) => {
+        //request item deleted at /feedback/id server route
         axios.delete('/feedback/' + id)
         .then(response => {
+            //get data after it has been updated
             this.getFeedbackData();
         })
         .catch(error => {
@@ -37,23 +42,26 @@ class Admin extends Component {
     }
 
     handleReturn = () => {
+        //navigate to start of survey
         this.props.history.push('/');
     }
 
     render() {
 
-        // console.log(this.state.feedbackData)
-
         return (
             <div>
+                {/* card container */}
                 <Card className="inputCard">
                     <CardContent>
+                        {/* title of table */}
                         <Typography component="h2" variant="h5" gutterBottom>
                             Feedback Received
                         </Typography>
+                        {/* results table */}
                         <Table>
                             <TableHead>
                                 <TableRow>
+                                    {/* column headings */}
                                     <TableCell align="center">Feeling</TableCell>
                                     <TableCell align="center">Understanding</TableCell>
                                     <TableCell align="center">Support</TableCell>
@@ -62,6 +70,7 @@ class Admin extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
+                                {/* map local state feedback data to create each table row */}
                                 {this.state.feedbackData.map((entry) => {
                                     return <TableRow key={entry.id}>
                                         <TableCell align="center">{entry.feeling}</TableCell>
@@ -80,6 +89,7 @@ class Admin extends Component {
                             </TableBody>
                         </Table>
                     </CardContent>
+                    {/* button area - bottom of card */}
                     <CardActions className="cardActions">
                         <Button
                             variant="outlined"
@@ -94,4 +104,4 @@ class Admin extends Component {
     }
 }
 
-export default connect()(Admin);
+export default Admin;

@@ -5,16 +5,19 @@ import { MenuItem, TextField, Button, Card, CardContent, CardActions, Typography
 
 class SupportCard extends Component {
 
+    //state values for rating and whether or not valid number has been selected
     state = {
         rating: 0,
         valid: false
     }
 
+    //when NEXT button clicked, send rating to reducer and navigate to /comments
     handleNext = () => {
         this.props.dispatch({ type: 'SET_FEEDBACK', name: 'support', payload: this.state.rating })
         this.props.history.push('/comments');
     }
 
+    //when value is selected from dropdown, save it in local state
     handleSelect = (event) => {
         this.setState({
             rating: event.target.value,
@@ -24,15 +27,18 @@ class SupportCard extends Component {
 
     render() {
         
-        console.log('rating:', this.state.rating);
+        console.log('support rating:', this.state.rating);
 
         return (
             <div>
+                {/* card container */}
                 <Card className="inputCard">
                     <CardContent>
+                        {/* question */}
                         <Typography component="h2" variant="h5" gutterBottom>
                             How well are you being supported?
                         </Typography>
+                        {/* input dropdown */}
                         <TextField
                             select
                             className="inputField"
@@ -49,6 +55,7 @@ class SupportCard extends Component {
                             <MenuItem value="5">5</MenuItem>
                         </TextField>
                     </CardContent>
+                    {/* button area - bottom of card */}
                     <CardActions className="cardActions">
                         <Button
                             variant="outlined"
@@ -59,10 +66,12 @@ class SupportCard extends Component {
                         >NEXT</Button>
                     </CardActions>
                 </Card>
+                {/* review component */}
                 <Review />
             </div>
         )
     }
 }
 
+//connect to allow dispatch
 export default connect()(SupportCard);

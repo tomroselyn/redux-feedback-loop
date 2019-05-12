@@ -5,16 +5,19 @@ import { MenuItem, TextField, Button, Card, CardContent, CardActions, Typography
 
 class UnderstandingCard extends Component {
 
+    //state values for rating and whether or not valid number has been selected
     state = {
         rating: 0,
         valid: false
     }
 
+    //when NEXT button clicked, send rating to reducer and navigate to /support
     handleNext = () => {
         this.props.dispatch({ type: 'SET_FEEDBACK', name: 'understanding', payload: this.state.rating })
         this.props.history.push('/support');
     }
 
+    //when value is selected from dropdown, save it in local state
     handleSelect = (event) => {
         this.setState({
             rating: event.target.value,
@@ -24,15 +27,18 @@ class UnderstandingCard extends Component {
 
     render() {
         
-        console.log('rating:', this.state.rating);
+        console.log('understanding rating:', this.state.rating);
 
         return (
             <div>
+                {/* card container */}
                 <Card className="inputCard">
                     <CardContent>
+                        {/* question */}
                         <Typography component="h2" variant="h5" gutterBottom>
                             How well are you understanding the content?
                         </Typography>
+                        {/* input dropdown */}
                         <TextField
                             select
                             className="inputField"
@@ -49,6 +55,7 @@ class UnderstandingCard extends Component {
                             <MenuItem value="5">5</MenuItem>
                         </TextField>
                     </CardContent>
+                    {/* button area - bottom of card */}
                     <CardActions className="cardActions">
                         <Button
                             variant="outlined"
@@ -59,10 +66,12 @@ class UnderstandingCard extends Component {
                         >NEXT</Button>
                     </CardActions>
                 </Card>
+                {/* review component */}
                 <Review />
             </div>
         )
     }
 }
 
+//connect to allow dispatch
 export default connect()(UnderstandingCard);

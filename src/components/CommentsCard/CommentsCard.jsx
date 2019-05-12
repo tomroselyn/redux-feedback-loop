@@ -5,16 +5,19 @@ import { TextField, Button, Card, CardContent, CardActions, Typography } from '@
 
 class CommentsCard extends Component {
 
+    //state value for storing comment until NEXT is clicked
     state = {
         comment: ''
     }
     
+    //when input value is changed, save the text in local state
     handleInput = (event) => {
         this.setState({
             comment: event.target.value
         })
     }
 
+    //when NEXT button clicked, send comment to reducer and navigate to /review
     handleNext = () => {
         this.props.dispatch({ type: 'SET_FEEDBACK', name: 'comments', payload: this.state.comment })
         this.props.history.push('/review');
@@ -22,6 +25,7 @@ class CommentsCard extends Component {
 
     render() {
 
+        //check for content in state (will allow NEXT button to be clicked)
         let isValid;
         if (this.state.comment) {
             isValid = true;
@@ -31,11 +35,14 @@ class CommentsCard extends Component {
 
         return (
             <div>
+                {/* card container */}
                 <Card className="inputCard">
                     <CardContent>
+                        {/* question */}
                         <Typography component="h2" variant="h5" gutterBottom>
                             Any comments you want to leave?
                         </Typography>
+                        {/* multiline text input */}
                         <TextField
                             multiline
                             className="commentField"
@@ -47,6 +54,7 @@ class CommentsCard extends Component {
                         >
                         </TextField>
                     </CardContent>
+                    {/* button area - bottom of card */}
                     <CardActions className="cardActions">
                         <Button
                             variant="outlined"
@@ -57,20 +65,12 @@ class CommentsCard extends Component {
                         >NEXT</Button>
                     </CardActions>
                 </Card>
+                {/* review component */}
                 <Review />
             </div>
         )
-
-        // return (
-        //     <div>
-        //         <h2>Any comments you want to leave?</h2>
-        //         <label>Comments</label>
-        //         <input onChange={this.handleInput} type="text" />
-        //         <button onClick={this.handleNext}>NEXT</button>
-        //         <Review />
-        //     </div>
-        // )
     }
 }
 
+//connect to allow dispatch
 export default connect()(CommentsCard);

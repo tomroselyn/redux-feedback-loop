@@ -7,6 +7,7 @@ import {Button, Card, CardContent, CardActions, Typography} from '@material-ui/c
 class Review extends Component {
 
     handleReset = () => {
+        //navigate to start of form when RESET button is clicked
         this.props.history.push('/');
     }
 
@@ -25,14 +26,17 @@ class Review extends Component {
 
     render() {
 
+        //declare submitButton before conditionally rendering
         let submitButton;
 
+        //check for valid data in all reducer fields
         if (
             this.props.feedback.feeling
             && this.props.feedback.understanding
             && this.props.feedback.support
             && this.props.feedback.comments
         ) {
+            //clickable button
             submitButton = 
                 <Button
                     variant="outlined"
@@ -41,6 +45,7 @@ class Review extends Component {
                     onClick={this.handleSubmit}
                 >SUBMIT</Button>
         } else {
+            //disabled button if data is missing/invalid
             submitButton = 
                 <Button
                     variant="outlined"
@@ -52,11 +57,14 @@ class Review extends Component {
 
         return (
             <div>
+                {/* card container */}
                 <Card className="reviewCard">
                     <CardContent>
+                        {/* card title */}
                         <Typography component="h2" variant="h5" gutterBottom>
                             Review Your Feedback
                         </Typography>
+                        {/* each property value stored in the reducer */}
                         <Typography component="p" variant="body2">
                             Feeling: {this.props.feedback.feeling}
                         </Typography>
@@ -70,13 +78,16 @@ class Review extends Component {
                             Comments: {this.props.feedback.comments}
                         </Typography>
                     </CardContent>
+                    {/* button area - bottom of card */}
                     <CardActions className="cardActions">
+                        {/* reset button */}
                         <Button
                             variant="outlined"
                             color="secondary"
                             size="large"
                             onClick={this.handleReset}>
                         Reset</Button>
+                        {/* submit button */}
                         {submitButton}
                     </CardActions>
                 </Card>
@@ -85,8 +96,10 @@ class Review extends Component {
     }
 }
 
+//map redux state so current stored values can be shown on DOM and posted to server
 const mapRedux = (reduxState) => {
     return {feedback: reduxState.feedbackReducer}
 }
 
+//withRouter used to fix history push error
 export default withRouter(connect(mapRedux)(Review));

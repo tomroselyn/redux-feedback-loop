@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 
@@ -17,6 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
+          {/* header */}
           <header className="App-header">
             <Link to="/admin">
               <img className="adminIcon" src="images/table-large.png" alt="admin-icon" />
@@ -24,6 +24,7 @@ class App extends Component {
             <h1 className="App-title">daily feedback</h1>
             <h4 className="App-intro">(don't forget it!)</h4>
           </header>
+          {/* routes */}
           <Route exact path="/" component={FeelingCard}/>
           <Route path="/understanding" component={UnderstandingCard} />
           <Route path="/support" component={SupportCard} />
@@ -37,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default App;
