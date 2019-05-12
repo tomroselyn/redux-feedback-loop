@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import { Card, CardContent, CardActions, Typography, Table, TableBody, TableCell, TableHead, TableRow, Button } from '@material-ui/core';
+
 
 class Admin extends Component {
 
@@ -24,36 +26,69 @@ class Admin extends Component {
         })
     }
 
+    handleDelete = (id) => {
+        axios.delete('/feedback/' + id)
+        .then(response => {
+            this.getFeedbackData();
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+    handleReturn = () => {
+        this.props.history.push('/');
+    }
+
     render() {
 
         // console.log(this.state.feedbackData)
 
-        let eachTableRow = this.state.feedbackData.map((entry, i) => {
-            return <tr key={i}>
-                <td>{entry.feeling}</td>
-                <td>{entry.understanding}</td>
-                <td>{entry.support}</td>
-                <td>{entry.comments}</td>
-                <td><button>DELETE</button></td>
-            </tr>
-        })
-
         return (
             <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Understanding</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {eachTableRow}
-                    </tbody>
-                </table>
+                <Card className="inputCard">
+                    <CardContent>
+                        <Typography component="h2" variant="h5" gutterBottom>
+                            Feedback Received
+                        </Typography>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">Feeling</TableCell>
+                                    <TableCell align="center">Understanding</TableCell>
+                                    <TableCell align="center">Support</TableCell>
+                                    <TableCell align="center">Comments</TableCell>
+                                    <TableCell align="center">Delete</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.feedbackData.map((entry) => {
+                                    return <TableRow key={entry.id}>
+                                        <TableCell align="center">{entry.feeling}</TableCell>
+                                        <TableCell align="center">{entry.understanding}</TableCell>
+                                        <TableCell align="center">{entry.support}</TableCell>
+                                        <TableCell align="center">{entry.comments}</TableCell>
+                                        <TableCell align="center">
+                                            <Button
+                                                variant="outlined"
+                                                color="secondary"
+                                                onClick={() => this.handleDelete(entry.id)}
+                                            >DELETE</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                })}
+                            </TableBody>
+                        </Table>
+                    </CardContent>
+                    <CardActions className="cardActions">
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            size="large"
+                            onClick={this.handleReturn}
+                        >Return To Feedback Form</Button>
+                    </CardActions>
+                </Card>
             </div>
         )
     }

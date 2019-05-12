@@ -3,9 +3,21 @@ const router = express.Router();
 const pool = require('../modules/pool');
 // let feedbackData = require('../modules/feedback.data');
 
+//DELETE
+router.delete('/:id', (req, res) => {
+    let sqlText = `DELETE FROM "feedback" WHERE "id" = $1`;
+    pool.query(sqlText, [req.params.id])
+    .then(result => {
+        res.sendStatus(204);
+    })
+    .catch(error => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+})
+
 //GET
 router.get('/', (req, res) => {
-    // res.send(feedbackData);
     let sqlText = `SELECT * FROM "feedback" ORDER BY "id" ASC`;
     pool.query(sqlText)
     .then(result => {
