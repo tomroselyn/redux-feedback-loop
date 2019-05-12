@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
+import {Button, Card, CardContent, CardActions, Typography} from '@material-ui/core';
 
 class Review extends Component {
 
@@ -31,19 +32,51 @@ class Review extends Component {
             && this.props.feedback.support <= 5
             && this.props.feedback.comments !== ''
         ) {
-            submitButton = <button onClick={this.handleSubmit}>SUBMIT</button>
+            submitButton = 
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                    onClick={this.handleSubmit}
+                >SUBMIT</Button>
         } else {
-            submitButton = <button disabled>INCOMPLETE</button>
+            submitButton = 
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                    disabled
+                >INCOMPLETE</Button>
         }
 
         return (
             <div>
-                <h2>Review Your Feedback</h2>
-                <p>Feelings: {this.props.feedback.feeling}</p>
-                <p>Understanding: {this.props.feedback.understanding}</p>
-                <p>Support: {this.props.feedback.support}</p>
-                <p>Comments: {this.props.feedback.comments}</p>
-                {submitButton}
+                <Card className="reviewCard">
+                    <CardContent>
+                        <Typography component="h2" variant="h5" gutterBottom>
+                            Review Your Feedback
+                        </Typography>
+                        <Typography component="p" variant="body2">
+                            Feelings: {this.props.feedback.feeling}
+                        </Typography>
+                        <Typography component="p" variant="body2">
+                            Understanding: {this.props.feedback.understanding}
+                        </Typography>
+                        <Typography component="p" variant="body2">
+                            Support: {this.props.feedback.support}
+                        </Typography>
+                        <Typography component="p" variant="body2">
+                            Comments: {this.props.feedback.comments}
+                        </Typography>
+                        {/* <p>Feelings: {this.props.feedback.feeling}</p>
+                        <p>Understanding: {this.props.feedback.understanding}</p>
+                        <p>Support: {this.props.feedback.support}</p>
+                        <p>Comments: {this.props.feedback.comments}</p> */}
+                    </CardContent>
+                    <CardActions className="cardActions">
+                        {submitButton}
+                    </CardActions>
+                </Card>
             </div>
         )
     }

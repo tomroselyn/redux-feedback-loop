@@ -5,11 +5,11 @@ import Review from '../Review/Review';
 class CommentsCard extends Component {
     
     handleInput = (event) => {
-        this.props.dispatch({ type: 'SET_COMMENTS', payload: event.target.value })
+        this.props.dispatch({ type: 'SET_FEEDBACK', name: 'comments', payload: event.target.value })
     }
 
     handleNext = () => {
-        this.props.history.push('/');
+        this.props.history.push('/review');
     }
 
     render() {

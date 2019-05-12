@@ -5,7 +5,7 @@ import Review from '../Review/Review';
 class UnderstandingCard extends Component {
     
     handleInput = (event) => {
-        this.props.dispatch({ type: 'SET_UNDERSTANDING', payload: event.target.value })
+        this.props.dispatch({ type: 'SET_FEEDBACK', name: 'understanding', payload: event.target.value })
     }
 
     handleNext = () => {
