@@ -6,6 +6,10 @@ import {Button, Card, CardContent, CardActions, Typography} from '@material-ui/c
 
 class Review extends Component {
 
+    handleReset = () => {
+        this.props.history.push('/');
+    }
+
     handleSubmit = () => {
         //send data to server for storage
         axios.post('/feedback', this.props.feedback)
@@ -43,7 +47,7 @@ class Review extends Component {
                     color="primary"
                     size="large"
                     disabled
-                >INCOMPLETE</Button>
+                >SUBMIT</Button>
         }
 
         return (
@@ -67,6 +71,12 @@ class Review extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions className="cardActions">
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            size="large"
+                            onClick={this.handleReset}>
+                        Reset</Button>
                         {submitButton}
                     </CardActions>
                 </Card>
