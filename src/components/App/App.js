@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 
 //routes
@@ -16,11 +16,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4><i>Don't forget it!</i></h4>
-        </header>
         <Router>
+          <header className="App-header">
+            <Link to="/admin">
+              <img className="adminIcon" src="images/table-large.png" alt="admin-icon" />
+            </Link>
+            <h1 className="App-title">daily feedback</h1>
+            <h4 className="App-intro">(don't forget it!)</h4>
+          </header>
           <Route exact path="/" component={FeelingCard}/>
           <Route path="/understanding" component={UnderstandingCard} />
           <Route path="/support" component={SupportCard} />

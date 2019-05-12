@@ -1,19 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 .App {
   text-align: center;
+  font-family: 'Roboto', 'sans-serif';
 }
 
 .App-header {
-  background-color: #033076;
+  background-color: #1976d2;
   min-height: 70px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-family: 'Righteous', 'sans-serif';
+  font-size: 2em;
+  clear: right;
 }
 
 .App-intro {
-  font-size: large;
+  font-style: italic;
+}
+
+.adminIcon {
+  float: right;
 }
 
