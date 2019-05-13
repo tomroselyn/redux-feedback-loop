@@ -48,6 +48,8 @@ class Admin extends Component {
 
     render() {
 
+        console.log(this.state.feedbackData);
+
         return (
             <div>
                 {/* card container */}
