@@ -29,7 +29,7 @@ Steps to get the development environment running.
 
 ## Screen Shot
 
-![Daily Feedback screenshot]('/images/public/daily-feedback-screenshot.png')
+![Daily Feedback screenshot]('/images/daily-feedback-screenshot.png')
 
 ## Documentation
 
